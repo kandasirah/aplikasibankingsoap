@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "8Q/Skee3qvEjasHVAJM1wYgVf69qBfEC3m2SnC+oe+g=",
+  "Source": "AplikasiWebMethodSOAP",
+  "BasePath": "_content/AplikasiWebMethodSOAP",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "AplikasiWebMethodSOAP\\wwwroot",
+      "Source": "AplikasiWebMethodSOAP",
+      "ContentRoot": "C:\\Users\\naraya\\Desktop\\AplikasiWebMethodSOAP\\wwwroot\\",
+      "BasePath": "_content/AplikasiWebMethodSOAP",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}

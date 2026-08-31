@@ -1,0 +1,80 @@
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="card">
+    <div class="card-header text-center">
+        <h2><i class="fas fa-university me-2"></i>Banking SOAP Service</h2>
+        <p class="mb-0">Sistem Banking dengan WebMethod SOAP</p>
+    </div>
+    <div class="card-body p-4">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <a href="/Banking/CreateAccount" class="text-decoration-none">
+                    <div class="card feature-card h-100 text-center p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <h5 class="text-dark">Buat Akun</h5>
+                        <p class="text-muted mb-0">Buka akun baru</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="/Banking/AllAccounts" class="text-decoration-none">
+                    <div class="card feature-card h-100 text-center p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h5 class="text-dark">Daftar Akun</h5>
+                        <p class="text-muted mb-0">Lihat semua akun</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="/Banking/Deposit" class="text-decoration-none">
+                    <div class="card feature-card h-100 text-center p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-arrow-down"></i>
+                        </div>
+                        <h5 class="text-dark">Setor</h5>
+                        <p class="text-muted mb-0">Setor tunai</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="/Banking/Withdraw" class="text-decoration-none">
+                    <div class="card feature-card h-100 text-center p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-arrow-up"></i>
+                        </div>
+                        <h5 class="text-dark">Tarik</h5>
+                        <p class="text-muted mb-0">Tarik tunai</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="/Banking/Transfer" class="text-decoration-none">
+                    <div class="card feature-card h-100 text-center p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <h5 class="text-dark">Transfer</h5>
+                        <p class="text-muted mb-0">Transfer antar akun</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="/Banking/CloseAccount" class="text-decoration-none">
+                    <div class="card feature-card h-100 text-center p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-times"></i>
+                        </div>
+                        <h5 class="text-dark">Tutup Akun</h5>
+                        <p class="text-muted mb-0">Tutup akun existing</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

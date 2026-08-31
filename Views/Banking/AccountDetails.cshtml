@@ -1,0 +1,68 @@
+@model AplikasiWebMethodSOAP.Models.Account
+@{
+    ViewData["Title"] = "Detail Akun";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="mb-0"><i class="fas fa-user me-2"></i>Detail Akun</h4>
+            </div>
+            <div class="card-body p-4">
+                <div class="row mb-3">
+                    <div class="col-md-4 fw-bold">Nomor Akun:</div>
+                    <div class="col-md-8">
+                        <span class="badge bg-primary fs-6">@Model.AccountNumber</span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4 fw-bold">Nama Pemegang:</div>
+                    <div class="col-md-8">@Model.AccountHolderName</div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4 fw-bold">Tipe Akun:</div>
+                    <div class="col-md-8">@Model.AccountType</div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4 fw-bold">Saldo:</div>
+                    <div class="col-md-8">
+                        <span class="text-success fw-bold fs-5">@Model.Balance.ToString("C")</span>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-4 fw-bold">Tanggal Dibuat:</div>
+                    <div class="col-md-8">@Model.CreatedDate.ToString("dd MMMM yyyy HH:mm")</div>
+                </div>
+                <hr />
+                <div class="row g-2">
+                    <div class="col">
+                        <a href="/Banking/Deposit" class="btn btn-success w-100">
+                            <i class="fas fa-arrow-down me-2"></i>Setor
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="/Banking/Withdraw" class="btn btn-warning w-100">
+                            <i class="fas fa-arrow-up me-2"></i>Tarik
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="/Banking/Transfer" class="btn btn-info w-100">
+                            <i class="fas fa-exchange-alt me-2"></i>Transfer
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="/Banking/Transactions?accountNumber=@Model.AccountNumber" class="btn btn-secondary w-100">
+                            <i class="fas fa-history me-2"></i>Riwayat
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <a href="/Banking" class="btn btn-outline-secondary w-100">
+                        <i class="fas fa-arrow-left me-2"></i>Kembali ke Menu
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

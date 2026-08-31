@@ -1,0 +1,41 @@
+@model AplikasiWebMethodSOAP.Models.TransferRequest
+@{
+    ViewData["Title"] = "Transfer";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="mb-0"><i class="fas fa-exchange-alt me-2"></i>Transfer Antar Akun</h4>
+            </div>
+            <div class="card-body p-4">
+                <form asp-action="Transfer" method="post">
+                    <div class="mb-3">
+                        <label asp-for="FromAccountNumber" class="form-label">Dari Akun</label>
+                        <input asp-for="FromAccountNumber" class="form-control" placeholder="Nomor akun sumber" />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="ToAccountNumber" class="form-label">Ke Akun</label>
+                        <input asp-for="ToAccountNumber" class="form-control" placeholder="Nomor akun tujuan" />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Amount" class="form-label">Jumlah Transfer</label>
+                        <div class="input-group">
+                            <span class="input-group-text">Rp</span>
+                            <input asp-for="Amount" type="number" class="form-control" placeholder="0" min="1" />
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-banking">
+                            <i class="fas fa-paper-plane me-2"></i>Transfer
+                        </button>
+                        <a href="/Banking" class="btn btn-outline-secondary">
+                            <i class="fas fa-arrow-left me-2"></i>Kembali
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
