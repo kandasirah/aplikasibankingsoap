@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8Q/Skee3qvEjasHVAJM1wYgVf69qBfEC3m2SnC+oe+g=",
+  "Hash": "puHUa2cFwzY13uWXcp3j6Kk81WxotE0dSAX5ckAikNU=",
   "Source": "AplikasiWebMethodSOAP",
   "BasePath": "_content/AplikasiWebMethodSOAP",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "AplikasiWebMethodSOAP\\wwwroot",
       "Source": "AplikasiWebMethodSOAP",
-      "ContentRoot": "C:\\Users\\naraya\\Desktop\\AplikasiWebMethodSOAP\\wwwroot\\",
+      "ContentRoot": "c:\\Users\\naraya\\Desktop\\AplikasiWebMethodSOAP\\wwwroot\\",
       "BasePath": "_content/AplikasiWebMethodSOAP",
       "Pattern": "**"
     }

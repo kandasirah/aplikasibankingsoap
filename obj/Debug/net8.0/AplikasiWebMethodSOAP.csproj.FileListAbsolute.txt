@@ -89,3 +89,11 @@ C:\Users\naraya\Desktop\AplikasiWebMethodSOAP\bin\Debug\net8.0\ru\System.Service
 C:\Users\naraya\Desktop\AplikasiWebMethodSOAP\bin\Debug\net8.0\tr\System.ServiceModel.Primitives.resources.dll
 C:\Users\naraya\Desktop\AplikasiWebMethodSOAP\bin\Debug\net8.0\zh-Hans\System.ServiceModel.Primitives.resources.dll
 C:\Users\naraya\Desktop\AplikasiWebMethodSOAP\bin\Debug\net8.0\zh-Hant\System.ServiceModel.Primitives.resources.dll
+c:\Users\naraya\Desktop\AplikasiWebMethodSOAP\obj\Debug\net8.0\AplikasiWebMethodSOAP.sourcelink.json
+C:\Users\naraya\Desktop\AplikasiWebMethodSOAP\bin\Debug\net8.0\AplikasiWebMethodSOAP.xml
+C:\Users\naraya\Desktop\AplikasiWebMethodSOAP\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Users\naraya\Desktop\AplikasiWebMethodSOAP\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\naraya\Desktop\AplikasiWebMethodSOAP\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\naraya\Desktop\AplikasiWebMethodSOAP\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\naraya\Desktop\AplikasiWebMethodSOAP\obj\Debug\net8.0\AplikasiWebMethodSOAP.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\naraya\Desktop\AplikasiWebMethodSOAP\obj\Debug\net8.0\AplikasiWebMethodSOAP.xml

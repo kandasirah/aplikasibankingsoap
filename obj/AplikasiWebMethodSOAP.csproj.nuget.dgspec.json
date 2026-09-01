@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\naraya\\Desktop\\AplikasiWebMethodSOAP\\AplikasiWebMethodSOAP.csproj": {}
+    "c:\\Users\\naraya\\Desktop\\AplikasiWebMethodSOAP\\AplikasiWebMethodSOAP.csproj": {}
   },
   "projects": {
-    "C:\\Users\\naraya\\Desktop\\AplikasiWebMethodSOAP\\AplikasiWebMethodSOAP.csproj": {
+    "c:\\Users\\naraya\\Desktop\\AplikasiWebMethodSOAP\\AplikasiWebMethodSOAP.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\naraya\\Desktop\\AplikasiWebMethodSOAP\\AplikasiWebMethodSOAP.csproj",
+        "projectUniqueName": "c:\\Users\\naraya\\Desktop\\AplikasiWebMethodSOAP\\AplikasiWebMethodSOAP.csproj",
         "projectName": "AplikasiWebMethodSOAP",
-        "projectPath": "C:\\Users\\naraya\\Desktop\\AplikasiWebMethodSOAP\\AplikasiWebMethodSOAP.csproj",
+        "projectPath": "c:\\Users\\naraya\\Desktop\\AplikasiWebMethodSOAP\\AplikasiWebMethodSOAP.csproj",
         "packagesPath": "C:\\Users\\naraya\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\naraya\\Desktop\\AplikasiWebMethodSOAP\\obj\\",
+        "outputPath": "c:\\Users\\naraya\\Desktop\\AplikasiWebMethodSOAP\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\naraya\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -45,6 +45,10 @@
             "CoreWCF.Primitives": {
               "target": "Package",
               "version": "[1.9.1, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
             },
             "System.ServiceModel.Primitives": {
               "target": "Package",

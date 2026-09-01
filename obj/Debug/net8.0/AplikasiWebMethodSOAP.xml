@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AplikasiWebMethodSOAP</name>
+    </assembly>
+    <members>
+        <member name="T:AplikasiWebMethodSOAP.Controllers.BankingApiController">
+            <summary>
+            API Controller untuk operasi perbankan melalui SOAP service
+            </summary>
+        </member>
+        <member name="M:AplikasiWebMethodSOAP.Controllers.BankingApiController.CreateAccount(AplikasiWebMethodSOAP.Models.CreateAccountRequest)">
+            <summary>
+            Membuat akun baru di sistem
+            </summary>
+            <param name="request">Data akun baru termasuk nama, tipe, dan saldo awal</param>
+            <returns>Data akun yang berhasil dibuat</returns>
+            <response code="201">Akun berhasil dibuat</response>
+            <response code="400">Data tidak valid</response>
+        </member>
+        <member name="M:AplikasiWebMethodSOAP.Controllers.BankingApiController.GetAccount(System.String)">
+            <summary>
+            Mendapatkan detail akun berdasarkan nomor akun
+            </summary>
+            <param name="accountNumber">Nomor akun yang akan dilihat detailnya</param>
+            <returns>Detail akun</returns>
+            <response code="200">Detail akun ditemukan</response>
+            <response code="404">Akun tidak ditemukan</response>
+        </member>
+        <member name="M:AplikasiWebMethodSOAP.Controllers.BankingApiController.GetAllAccounts">
+            <summary>
+            Mendapatkan semua daftar akun yang terdaftar
+            </summary>
+            <returns>Daftar semua akun</returns>
+            <response code="200">Daftar semua akun</response>
+        </member>
+        <member name="M:AplikasiWebMethodSOAP.Controllers.BankingApiController.Deposit(AplikasiWebMethodSOAP.Models.DepositRequest)">
+            <summary>
+            Melakukan deposit ke akun
+            </summary>
+            <param name="request">Data deposit termasuk nomor akun dan jumlah</param>
+            <returns>Data akun setelah deposit</returns>
+            <response code="200">Deposit berhasil</response>
+            <response code="400">Data tidak valid atau akun tidak ditemukan</response>
+        </member>
+        <member name="M:AplikasiWebMethodSOAP.Controllers.BankingApiController.Withdraw(AplikasiWebMethodSOAP.Models.WithdrawRequest)">
+            <summary>
+            Melakukan penarikan dari akun
+            </summary>
+            <param name="request">Data penarikan termasuk nomor akun dan jumlah</param>
+            <returns>Data akun setelah penarikan</returns>
+            <response code="200">Penarikan berhasil</response>
+            <response code="400">Data tidak valid, saldo tidak mencukupi, atau akun tidak ditemukan</response>
+        </member>
+        <member name="M:AplikasiWebMethodSOAP.Controllers.BankingApiController.Transfer(AplikasiWebMethodSOAP.Models.TransferRequest)">
+            <summary>
+            Melakukan transfer antar akun
+            </summary>
+            <param name="request">Data transfer termasuk akun sumber, tujuan, dan jumlah</param>
+            <returns>Hasil transfer</returns>
+            <response code="200">Transfer berhasil</response>
+            <response code="400">Data tidak valid, saldo tidak mencukupi, atau akun tidak ditemukan</response>
+        </member>
+        <member name="M:AplikasiWebMethodSOAP.Controllers.BankingApiController.GetTransactions(System.String)">
+            <summary>
+            Mendapatkan riwayat transaksi akun
+            </summary>
+            <param name="accountNumber">Nomor akun yang akan dilihat riwayatnya</param>
+            <returns>Daftar transaksi akun</returns>
+            <response code="200">Riwayat transaksi</response>
+            <response code="400">Terjadi kesalahan</response>
+        </member>
+        <member name="M:AplikasiWebMethodSOAP.Controllers.BankingApiController.GetBalance(System.String)">
+            <summary>
+            Memeriksa saldo akun
+            </summary>
+            <param name="accountNumber">Nomor akun yang akan diperiksa saldonya</param>
+            <returns>Saldo akun</returns>
+            <response code="200">Saldo akun</response>
+            <response code="404">Akun tidak ditemukan</response>
+        </member>
+        <member name="M:AplikasiWebMethodSOAP.Controllers.BankingApiController.CloseAccount(System.String)">
+            <summary>
+            Menutup akun (saldo harus 0)
+            </summary>
+            <param name="accountNumber">Nomor akun yang akan ditutup</param>
+            <returns>Hasil penutupan akun</returns>
+            <response code="200">Akun berhasil ditutup</response>
+            <response code="400">Akun masih memiliki saldo atau tidak ditemukan</response>
+        </member>
+    </members>
+</doc>

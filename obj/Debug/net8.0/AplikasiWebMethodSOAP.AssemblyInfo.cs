@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AplikasiWebMethodSOAP")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f7493b4e831ed0e3e89b499d8f7125814d8b85ee")]
 [assembly: System.Reflection.AssemblyProductAttribute("AplikasiWebMethodSOAP")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AplikasiWebMethodSOAP")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
