@@ -55,124 +55,111 @@ presentasi: **SOAP endpoint**, **REST API**, dan **MVC web UI**.
 Proyek ini mengikuti pola **3-tier / layered**, dengan satu proyek .NET yang memisahkan
 tanggung jawab melalui folder dan interface:
 
-```mermaid
-graph TD
-    subgraph "Layer 1 — Presentation (Konsumen)"
-        direction TB
-        MVC["MVC UI<br/>(BankingController + Views)"]
-        REST["REST API<br/>(BankingApiController)"]
-        SWAG["Swagger UI<br/>(/swagger)"]
-    end
-
-    subgraph "Layer 2 — SOAP Service (Penyedia)"
-        direction TB
-        SVC["BankingService<br/>(Services/BankingService.cs)"]
-        C["IBankingService<br/>(Contracts/IBankingService.cs)"]
-    end
-
-    subgraph "Layer 3 — Domain & Model"
-        direction TB
-        MOD["BankingModels.cs<br/>Account, Transaction, Request DTOs"]
-        INMEM["In-Memory Store<br/>(static List&lt;Account&gt;)"]
-    end
-
-    MVC ---|> HTTP (browser)
-    REST ---|> HTTP (REST)
-    SWAG ---|> HTTP (docs)
-
-    MVC -.->|SOAP over HTTP| SVC
-    REST -.->|SOAP over HTTP| SVC
-
-    SVC -.->|implements| C
-    SVC -->|operates on| INMEM
-    SVC -->|serializes| MOD
-    C -->|defines| MOD
+```
+                            ┌──────────────────────────────────────────────────┐
+                            │  LAYER 1 — PRESENTATION  (Konsumen)              │
+                            │  ┌──────────┐  ┌───────────┐  ┌─────────────┐  │
+                            │  │ MVC UI   │  │  REST API │  │ Swagger UI  │  │
+                            │  │ Browser  │  │ /api      │  │ /swagger    │  │
+                            │  └────┬─────┘  └─────┬─────┘  └─────────────┘  │
+                            └──────┼────────────────┼────────────────────────┘
+                                   │   HTTP         │ HTTP
+                                   ▼                ▼
+                          ┌─────────────────────────────────────┐
+                          │  BankingClient  (HTTP + manual XML) │
+                          │  Controllers/BankingClient.cs        │
+                          └─────────────────────────────────────┘
+                                   │   SOAP over HTTP (POST /BankingService.svc)
+                                   ▼
+                            ┌────────────────────────────────────┐
+                            │ LAYER 2 — SOAP SERVICE  (Penyedia)   │
+                            │  ┌──────────────────────┐           │
+                            │  │ BankingService        │           │
+                            │  │ Services/Banking*.cs  │           │
+                            │  └─────┬───────────┬────┘           │
+                            │        │ implements│ defines        │
+                            │        ▼           ▼               │
+                            │  IBankingService   BankingModels    │
+                            │  Contracts         (DataContracts)   │
+                            └──────┬───────────────────────────────┘
+                                   │ operates on
+                                   ▼
+                            ┌────────────────────────────────────┐
+                            │  LAYER 3 — DOMAIN / STATE           │
+                            │  In-Memory Store (static lists)     │
+                            │  • _accounts  : List<Account>      │
+                            │  • _transactions: List<Transaction>│
+                            └────────────────────────────────────┘
 ```
 
-**Alur Permintaan Sistem (diagram alur interaktor)**
+**Alur Permintaan Sistem**
 
-```mermaid
-sequenceDiagram
-    participant U as Pengguna
-    participant B as Browser
-    participant A as ASP.NET Core App
-    participant K as BankingClient (SOAP)
-    participant S as BankingService (CoreWCF)
+```
+  Pengguna / HTTP Client
+  ──────────────────────────────────────────────────────────────────
 
-    Note over U,S: Akses Web UI (MVC)
-    U ->> B: GET /Banking/...
-    B ->> A: HttpRequest (MVC route)
-    A ->> A: BankingController action
+  Web UI (MVC)
+  ───────────
+  Browser ──GET /Banking/──────────► ASP.NET Core Host
+                                  └─ BankingController (MVC)
+                                        │
+                                        ├── new BankingClient(url)
+                                        │       │ build SOAP envelope (XML)
+                                        │       ▼
+                                        │   POST /BankingService.svc
+                                        │       │
+                                        │       ▼
+                                        └── BankingService (CoreWCF)
+                                                  │ IBankingService.xxx
+                                                  │  validate + mutate in-mem
+                                                  ▼
+                                            SOAP response (XML)
+                                                  │
+                                          BankingClient parses XML
+                                                  │
+                                          Controller → View / redirect
+                                                  │
+                                                HTML ──► Browser
 
-    alt Operasi men-trigger SOAP
-        A ->> K: BankingClient.NewCall(operation, payload)
-        K ->> S: POST BankingService.svc (SOAP envelope)
-        S ->> S: IBankingService operasi + validasi
-        S -->> K: SOAP response (XML)
-        K ->> A: Deserialized DTO
-        A -->> B: View / redirect
-        B -->> U: HTML response
-    end
-
-    Note over U,S: Akses REST API
-    U ->> B: POST /api/BankingApi/deposit
-    B ->> A: HttpRequest (REST route)
-    A ->> K: BankingClient.NewCall(...)
-    K ->> S: (sama seperti di atas)
-    S -->> K: SOAP response
-    K ->> A: DTO
-    A -->> B: JSON 200 / 400
-    B -->> U: JSON
+  REST API
+  ───────
+  Client ──POST /api/BankingApi/deposit──► BankingApiController
+                                        │
+                                        ├── new BankingClient(url)   (id. SOAP)
+                                        │       └──► POST /BankingService.svc
+                                        │               └──► BankingService
+                                        │                      └──► response XML
+                                        │
+                                        └── JSON 200 / 400  ──► Client
 ```
 
 **Skema Relasi Model Data (Data Contract)**
 
-```mermaid
-classDiagram
-    class Account {
-        +string AccountNumber
-        +string AccountHolderName
-        +decimal Balance
-        +string AccountType
-        +DateTime CreatedDate
-    }
-    class Transaction {
-        +string TransactionId
-        +string FromAccountNumber
-        +string ToAccountNumber
-        +decimal Amount
-        +string TransactionType
-        +DateTime TransactionDate
-        +string Description
-    }
-    class CreateAccountRequest {
-        +string AccountHolderName
-        +decimal InitialBalance
-        +string AccountType
-    }
-    class DepositRequest {
-        +string AccountNumber
-        +decimal Amount
-    }
-    class WithdrawRequest {
-        +string AccountNumber
-        +decimal Amount
-    }
-    class TransferRequest {
-        +string FromAccountNumber
-        +string ToAccountNumber
-        +decimal Amount
-    }
-    class ServiceResponse {
-        +bool Success
-        +string Message
-    }
+```
+  ┌──────────────┐          1      ┌──────────────┐
+  │   Account    │◄─────────────── │ Transaction  │
+  └──────────────┘    melibatkan  └──────────────┘
+  AccountNumber                   TransactionId
+  AccountHolderName               FromAccountNumber  (debit, 0..1 Account)
+  Balance                         ToAccountNumber    (kredit, 0..1 Account)
+  AccountType                     Amount
+  CreatedDate                     TransactionType
+                                  TransactionDate
+                                  Description
 
-    Account "1" <-- "0..*" Transaction : melibatkan
-    Transaction "1" -- "0..1" Account : debit
-    Transaction "1" -- "0..1" Account : kredit
-    BankingService ..> Account : mengelola
-    BankingService ..> Transaction : mencatat
+  Request DTOs  ──►  operasi SOAP yang sesuaian:
+
+  CreateAccountRequest ──► CreateAccountAsync()
+  DepositRequest         ──► DepositAsync()
+  WithdrawRequest        ──► WithdrawAsync()
+  TransferRequest        ──► TransferAsync()
+  (string accountNumber) ──► GetAccountAsync()
+                          ──► GetTransactionHistoryAsync()
+                          ──► GetBalanceAsync()
+                          ──► CloseAccountAsync()
+
+  ServiceResponse ──► TransferAsync() & CloseAccountAsync()
+  (Success, Message)
 ```
 
 **Pola kunci:**
