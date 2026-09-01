@@ -1,1 +1,0 @@
-﻿<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"><s:Body><GetAllAccountsResponse xmlns="http://tempuri.org/"><GetAllAccountsResult xmlns:a="http://schemas.datacontract.org/2004/07/AplikasiWebMethodSOAP.Models" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"/></GetAllAccountsResponse></s:Body></s:Envelope>
